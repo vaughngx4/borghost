@@ -1,6 +1,6 @@
 # Borg Backup Admin Server Entity(BorgBASE)
 ## Description
-A containerized Borg backup server running over a reverse SSH tunnel.
+A containerized Borg backup server running over a reverse SSH tunnel. Built for Docker/Kubernetes.
 Currently only serves 1 remote backup host at a time.
 
 ## Note
