@@ -40,5 +40,5 @@ That's it! A reverse SSH tunnel to your remote backup location should be up and 
 
 ## Development
 ### ToDo
-[ ] Add support for more than 1 repo/machine
-[ ] Add web interface for administration
+- [ ] Add support for more than 1 repo/machine
+- [ ] Add web interface for administration
