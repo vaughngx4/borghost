@@ -4,7 +4,8 @@ A containerized Borg backup server running over a reverse SSH tunnel.
 Currently only serves 1 remote backup host at a time.
 
 ## Note
-This project is still in development.
+- This project is still in development.
+- The backup repo is restricted to `/backups/<my_repo_name>`.
 
 ## Installation
 Clone the repo and build the image:
@@ -20,7 +21,13 @@ cp .env.example .env
 vi .env
 ```
 
-Finally, run the container using:
+Initialize the server:
+```bash
+docker run --rm -v "/path/to/borg/data/ssh:/data/ssh" --entrypoint "/init.sh" sintelli/borgbase:latest
+```
+This will return a public key that you will need to authorize on your remote server in order for the server to create a reverse SSH tunnel.
+
+Once authorized, run the container using:
 ```bash
 docker-compose up -d
 ```
@@ -29,4 +36,4 @@ OR if you're using the compose plugin for Docker:
 docker compose up -d
 ```
 
-That's it! A reverse SSH tunnel to your remote backup location should be up and running for Borg to connnect to. The backup repo is restricted to `/backups/<my_repo_name>`.
+That's it! A reverse SSH tunnel to your remote backup location should be up and running for Borg to connnect to. View logs using `docker logs borgbase`
