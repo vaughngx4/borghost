@@ -12,9 +12,11 @@ while [ -e $initdone ]; do
     su-exec borg chmod 700 ~/.ssh
     su-exec borg touch ~/.ssh/authorized_keys
     su-exec borg chmod 600 ~/.ssh/authorized_keys
+    chown borg /backups
+    su-exec borg chmod 700 /backups
     cp /data/ssh/id_rsa /home/borg/.ssh/id_rsa
     cp /data/ssh/id_rsa.pub /home/borg/.ssh/id_rsa.pub
-    echo "command=\"borg serve --restrict-to-path /backups/$REPO\",restrict $SSH_AUTHORIZED_KEYS" > /home/borg/.ssh/authorized_keys
+    echo "command=\"borg serve --restrict-to-path /backups/$REPO >> /dev/stdout\",restrict $SSH_AUTHORIZED_KEYS" > /home/borg/.ssh/authorized_keys
     echo "Starting BorgBase"
     /usr/sbin/sshd.pam &
     echo "Started SSH"
