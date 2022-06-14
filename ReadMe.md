@@ -4,7 +4,7 @@ A containerized Borg backup server running over a reverse SSH tunnel.
 Currently only serves 1 remote backup host at a time.
 
 ## Note
-- This project is still in development.
+- This project is production ready. However, you may want to add additional restrictions to `app/sshd_config`.
 - The backup repo is restricted to `/backups/<my_repo_name>`.
 
 ## Installation
@@ -37,3 +37,8 @@ docker compose up -d
 ```
 
 That's it! A reverse SSH tunnel to your remote backup location should be up and running for Borg to connnect to. View logs using `docker logs borgbase`
+
+## Development
+### ToDo
+[ ] Add support for more than 1 repo/machine
+[ ] Add web interface for administration
