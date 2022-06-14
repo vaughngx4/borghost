@@ -1,0 +1,18 @@
+---
+version: '3.7'
+
+services:
+  borgbase:
+    image: sintelli/borgbase:latest
+    container_name: borgbase
+    restart: always
+    environment:
+      SSH_AUTHORIZED_KEYS: ${SSH_AUTHORIZED_KEYS}
+      BKP_USER: ${BACKUP_USER}
+      BKP_HOST: ${BACKUP_HOST}
+      PORT: ${PORT}
+      # ip on remote machine to bind to. Defaults to localhost.
+      REMOTE_BIND_IP: ${REMOTE_BIND_IP}
+    volumes:
+      - ./data:/data
+      - ./backups:/backups
