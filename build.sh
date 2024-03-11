@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t sintelli/borgbase ./app
+docker build -t sintelli/borghost:latest ./app
